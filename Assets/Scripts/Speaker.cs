@@ -20,6 +20,8 @@ public class Speaker : MonoBehaviour
 
     public void ShowText()
 	{
+		this.AdditionalAction();
+		
 		if (Global.instance.isNormal)
 		{
 			Global.instance.ChangeSpeakText(m_Texts_Day);
@@ -29,6 +31,5 @@ public class Speaker : MonoBehaviour
 			Global.instance.ChangeSpeakText(m_Texts_Night);
 		}
 		
-		this.AdditionalAction();
 	}
 }
