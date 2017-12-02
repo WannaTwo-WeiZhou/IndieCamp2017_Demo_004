@@ -82,7 +82,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6bb7bf17754e94eabe5174bada207c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Texts:
-  - "\u6B6A\u65E5\uFF01\u771F\u80FD\u8BF4\u8BDD\u554A\uFF01"
+  m_Texts_Day: " \u4F60\u6101\u5565"
+  m_Texts_Night: "\u4F60\u770B\u4E0D\u5230\u6211 \u770B\u4E0D\u5230\u6211"
 --- !u!114 &114870419795723070
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,6 +7,9 @@ public class Hero : MonoBehaviour
 {
     public float m_MoveVec = 5f;
 
+    // [HideInInspector]
+    public bool m_HoldPassCard = false;
+
     private Transform m_Trans;
     private Vector3 m_TarPos;
     private ClickObject m_CurClickObj = null;
@@ -17,7 +20,8 @@ public class Hero : MonoBehaviour
     {
         m_Trans = transform;
         m_TarPos = m_Trans.position;
-        m_CurClickObj = null;
+		m_CurClickObj = null;
+        m_HoldPassCard = false;
     }
 
     public void Move(Vector2 pos, ClickObject clickObj)
