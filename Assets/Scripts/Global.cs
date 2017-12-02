@@ -120,6 +120,8 @@ public class Global : MonoBehaviour
         {
             return;
         }
+		AudioManager.instance.ChangeVol(Constants.BGM_Theme,1f);
+		AudioManager.instance.Stop(Constants.BGM_BeyondWorld);
         isNormal = true;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
@@ -140,6 +142,8 @@ public class Global : MonoBehaviour
         {
             return;
         }
+		AudioManager.instance.ChangeVol(Constants.BGM_Theme,0f);
+		AudioManager.instance.Play(Constants.BGM_BeyondWorld);
         isNormal = false;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
