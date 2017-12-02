@@ -13,7 +13,7 @@ public class StateChange : MonoBehaviour {
 	}
 	void Start()
 	{
-		GameManager.instance.m_StateChanges.Add(this);
+		Global.instance.m_StateChanges.Add(this);
 	}
 
 	public void TurnToNormal()
