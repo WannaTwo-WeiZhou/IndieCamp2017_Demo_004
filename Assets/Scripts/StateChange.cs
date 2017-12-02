@@ -7,11 +7,11 @@ public class StateChange : MonoBehaviour
     public Sprite m_NormalSprite;
     public Sprite m_BeyondSprite;
 
-    private SpriteRenderer m_SR;
+    public SpriteRenderer m_SR;
 
     void Awake()
     {
-        m_SR = gameObject.GetComponent<SpriteRenderer>();
+        // m_SR = gameObject.GetComponent<SpriteRenderer>();
     }
     void Start()
     {
