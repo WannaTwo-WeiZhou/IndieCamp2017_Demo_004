@@ -14,8 +14,8 @@
 
     // Audio file name
     public const string BGM_Theme = "Theme";
-    public const string BGM_Noise_Rain_01 = "BGM_Noise_Rain_01";
-    public const string BGM_Noise_Thunder_01 = "BGM_Noise_Thunder_01";
+    public const string BGM_BeyondWorld = "BeyondWorld";
+
     
 
    
