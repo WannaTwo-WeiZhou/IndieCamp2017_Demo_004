@@ -37,10 +37,10 @@ GameObject:
   - component: {fileID: 4314470491461672}
   - component: {fileID: 61834273807459312}
   - component: {fileID: 114870419795723070}
-  - component: {fileID: 114033280354279808}
   - component: {fileID: 114889978794755212}
+  - component: {fileID: 114427968430916160}
   m_Layer: 0
-  m_Name: NPC_01
+  m_Name: NPC_CryingOldWoman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.66}
   m_EdgeRadius: 0
---- !u!114 &114033280354279808
+--- !u!114 &114427968430916160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,13 +106,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582679359827124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6bb7bf17754e94eabe5174bada207c, type: 3}
+  m_Script: {fileID: 11500000, guid: e25781c6a0d201e45b3cbd77fbfbacc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Texts_Day:
   - "\u4F60\u597D"
   m_Texts_Night:
-  - "\u4F60\u6101\u5565"
+  - 555
   m_CurLineIdx_Day: 0
   m_CurLineIdx_Night: 0
 --- !u!114 &114870419795723070

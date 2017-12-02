@@ -34,6 +34,7 @@ public class Global : MonoBehaviour
     public int m_KeyIdx = 0;
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
+    private Speaker m_CurSpeaker = null;
 
     void OnEnable()
     {
@@ -49,16 +50,27 @@ public class Global : MonoBehaviour
     void Start()
     {
         isNormal = true;
-		AudioManager.instance.Play(Constants.BGM_Theme);
+        AudioManager.instance.Play(Constants.BGM_Theme);
         m_KeyIdx = 0;
     }
-    public void ChangeSpeakText(string newText)
+    public void ChangeSpeakText(string newText, Speaker speaker = null)
     {
         m_SpeakText.text = "";
+        m_CurSpeaker = speaker;
 
         // DOTween.Restart(m_SpeakText);
         float dur = newText.Length * m_PerCharDur;
-        m_SpeakText.DOText(newText, dur);
+        m_SpeakText.DOText(newText, dur).
+        SetEase(Ease.Linear).
+        OnComplete(delegate ()
+            {
+                if (speaker != null)
+                {
+                    speaker.LineComplete();
+                    // m_CurSpeaker = null;
+                }
+                    
+            });
     }
     public void CleanSpeakText()
     {
@@ -70,6 +82,7 @@ public class Global : MonoBehaviour
         m_Btn_No.SetActive(false);
 
         m_CurSwitch = SwitchType.NULL;
+        m_CurSpeaker = null;
     }
     public void BtnCallback_Yes()
     {
@@ -113,6 +126,17 @@ public class Global : MonoBehaviour
 
         }
     }
+    public void BtnCallback_SpeakTable()
+    {
+        // Debug.Log("BtnCallback_SpeakTable 1");
+        if (m_CurSpeaker == null) return;
+
+        // Debug.Log("BtnCallback_SpeakTable 2");
+        if (DOTween.IsTweening(m_SpeakText)) return;
+
+        // Debug.Log("BtnCallback_SpeakTable 3");
+        m_CurSpeaker.ShowText();
+    }
 
     public void TurnToNormalWorld()
     {
@@ -120,8 +144,8 @@ public class Global : MonoBehaviour
         {
             return;
         }
-		AudioManager.instance.ChangeVol(Constants.BGM_Theme,1f);
-		AudioManager.instance.Stop(Constants.BGM_BeyondWorld);
+        AudioManager.instance.ChangeVol(Constants.BGM_Theme, 1f);
+        AudioManager.instance.Stop(Constants.BGM_BeyondWorld);
         isNormal = true;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
@@ -129,10 +153,10 @@ public class Global : MonoBehaviour
 
             one.TurnToNormal();
         }
-		foreach(var one in m_Wolfs)
-		{
-			one.StateChange(false,null);
-		}
+        foreach (var one in m_Wolfs)
+        {
+            one.StateChange(false, null);
+        }
 
         this.CleanSpeakText();
     }
@@ -142,18 +166,18 @@ public class Global : MonoBehaviour
         {
             return;
         }
-		AudioManager.instance.ChangeVol(Constants.BGM_Theme,0f);
-		AudioManager.instance.Play(Constants.BGM_BeyondWorld);
+        AudioManager.instance.ChangeVol(Constants.BGM_Theme, 0f);
+        AudioManager.instance.Play(Constants.BGM_BeyondWorld);
         isNormal = false;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
         {
             one.TurnToBeyond();
         }
-		foreach(var one in m_Wolfs)
-		{
-			one.StateChange(true,m_Hero.transform);
-		}
+        foreach (var one in m_Wolfs)
+        {
+            one.StateChange(true, m_Hero.transform);
+        }
 
         this.CleanSpeakText();
     }
@@ -189,7 +213,7 @@ public class Global : MonoBehaviour
 
     public void GameOver()
     {
-		Debug.LogError("Game Over");
+        Debug.LogError("Game Over");
     }
 }
 
