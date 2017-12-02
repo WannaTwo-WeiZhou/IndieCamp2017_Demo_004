@@ -6,14 +6,14 @@ public class SpeakerManager : MonoBehaviour {
 
 	public static SpeakerManager instance { get; private set; }
 
-	public Speaker m_ZhenZi;
-	public Speaker m_CryingOldWoman;
-	public Speaker m_Conductor;
-	public Speaker m_Fatty;
-	public Speaker m_Thin;
-	public Speaker m_Handsome;
-	public Speaker m_Beauty;
-	public Speaker m_Mum;
+	public ZhenZi m_ZhenZi;
+	public CryingOldWoman m_CryingOldWoman;
+	public Conductor m_Conductor;
+	public Fatty m_Fatty;
+	public Thin m_Thin;
+	public Handsome m_Handsome;
+	public Beauty m_Beauty;
+	public Mum m_Mum;
 
 	void OnEnable()
 	{
