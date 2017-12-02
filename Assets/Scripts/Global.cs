@@ -15,6 +15,8 @@ public class Global : MonoBehaviour
     public Text m_SpeakText;
     [HideInInspector]
     public List<StateChange> m_StateChanges;
+    [HideInInspector]
+    public List<Wolf> m_Wolfs;
     public bool isNormal = true;
 
     void OnEnable()
@@ -28,10 +30,10 @@ public class Global : MonoBehaviour
             Destroy(gameObject);
         }
     }
-	void Start()
-	{
-		isNormal = true;
-	}
+    void Start()
+    {
+        isNormal = true;
+    }
     public void ChangeSpeakText(string newText)
     {
         m_SpeakText.text = "";
@@ -52,6 +54,10 @@ public class Global : MonoBehaviour
 
             one.TurnToNormal();
         }
+		foreach(var one in m_Wolfs)
+		{
+			one.StateChange(false,null);
+		}
     }
     public void TurnToBeyondWorld()
     {
@@ -65,11 +71,16 @@ public class Global : MonoBehaviour
         {
             one.TurnToBeyond();
         }
+		foreach(var one in m_Wolfs)
+		{
+			one.StateChange(true,m_Hero.transform);
+		}
+
     }
 
     public void GameOver()
     {
-
+		Debug.LogError("Game Over");
     }
 }
 

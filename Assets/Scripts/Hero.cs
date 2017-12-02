@@ -62,8 +62,22 @@ public class Hero : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(coll.gameObject.name);
+        Debug.Log(other.name);
+        if (Global.instance.isNormal)
+        {
+
+        }
+        else
+        {
+            if (other.GetComponent<Wolf>() == true)
+            {
+                Global.instance.GameOver();
+            }
+        }
+
     }
 }
+
