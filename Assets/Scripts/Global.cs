@@ -51,6 +51,11 @@ public class Global : MonoBehaviour
             one.TurnToBeyond();
         }
     }
+
+	public void GameOver()
+	{
+
+	}
 }
 
 
