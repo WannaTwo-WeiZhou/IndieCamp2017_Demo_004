@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Speak : MonoBehaviour
+public class Speaker : MonoBehaviour
 {
 	public List<string> m_Texts = new List<string>();
 
-	private int m_CurIdx = 0;
+	protected int m_CurIdx = 0;
 
-	void Awake()
+	protected virtual void Awake()
 	{
 		m_CurIdx = 0;
+	}
+
+	protected virtual void AdditionalAction()
+	{
+
 	}
 
     public void ShowText()
@@ -18,6 +23,8 @@ public class Speak : MonoBehaviour
 		if (m_CurIdx >= m_Texts.Count) return;
 
 		Global.instance.ChangeSpeakText(m_Texts[m_CurIdx]);
-		m_CurIdx ++;
+		// m_CurIdx ++;
+
+		this.AdditionalAction();
 	}
 }

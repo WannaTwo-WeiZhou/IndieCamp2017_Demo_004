@@ -31,6 +31,8 @@ public class ClickObject : MonoBehaviour
         // Debug.Log(gameObject.name + "be clicked!!! Type = " + m_ClickedType);
 
         m_Hero.Move(pos, this);
+
+        Global.instance.CleanSpeakText();
     }
 
 	public void ReachedPos()
@@ -47,19 +49,19 @@ public class ClickObject : MonoBehaviour
 
             case ClickedType.MoveToPreScene:
                 {
-					
+					Global.instance.TryGoToPreScene();
                 }
                 break;
 
             case ClickedType.MoveToNextScene:
                 {
-					
+					Global.instance.TryGoToNextScene();
                 }
                 break;
 
             case ClickedType.MoveAndSpeak:
                 {
-					Speak speak = GetComponent<Speak>();
+					Speaker speak = GetComponent<Speaker>();
 					if (speak != null)
 					{
 						speak.ShowText();
