@@ -46,6 +46,7 @@ public class Global : MonoBehaviour
     void Start()
     {
         isNormal = true;
+		AudioManager.instance.Play(Constants.BGM_Theme);
     }
     public void ChangeSpeakText(string newText)
     {
