@@ -9,16 +9,31 @@ public class Hero : MonoBehaviour
 
     private Transform m_Trans;
     private Vector3 m_TarPos;
+	private ClickObject m_CurClickObj = null;
+
+    private const string MOVETWEENID = "MoveTween";
 
     void Awake()
     {
         m_Trans = transform;
         m_TarPos = m_Trans.position;
+		m_CurClickObj = null;
     }
 
-    public void Move(Vector2 pos)
+    public void Move(Vector2 pos, ClickObject clickObj)
     {
+        // DOTween.Pause(MOVETWEENID);
+
+        // float dur = (Mathf.Abs(pos.x - m_Trans.position.x)) / m_MoveVec;
+        // m_Trans.DOMoveX(pos.x, dur).SetId(MOVETWEENID).
+        //     OnComplete(delegate ()
+        //    {
+        //        clickObj.ReachedPos();
+        //    });
+        // m_Trans.DOMoveX(pos.x, dur);
+
         m_TarPos = new Vector3(pos.x, m_TarPos.y, 0);
+		m_CurClickObj = clickObj;
     }
 
     void Update()
@@ -32,6 +47,12 @@ public class Hero : MonoBehaviour
             Time.deltaTime * m_MoveVec)
         {
             m_Trans.position = m_TarPos;
+
+			if (m_CurClickObj != null)
+			{
+				m_CurClickObj.ReachedPos();
+				m_CurClickObj = null;
+			}
         }
         else
         {
