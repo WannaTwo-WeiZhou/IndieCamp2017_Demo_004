@@ -4,13 +4,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public static GameManager instance;
+	public List<StateChange> m_StateChanges; 
+	void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public void TurnToNormalWorld()
+	{
+		CameraEffect.instance.MaskScenes();
+		foreach(var one in m_StateChanges)
+		{
+			
+			one.TurnToNormal();
+		}
+	}
+	public void TurnToBeyondWorld()
+	{
+		CameraEffect.instance.MaskScenes();
+		foreach(var one in m_StateChanges)
+		{
+			one.TurnToBeyond();
+		}
 	}
 }
