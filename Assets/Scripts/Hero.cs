@@ -69,7 +69,7 @@ public class Hero : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
+        // Debug.Log(other.name);
         if (Global.instance.isNormal)
         {
 
