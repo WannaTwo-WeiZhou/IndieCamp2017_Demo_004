@@ -19,11 +19,13 @@ public class CardHolder : Speaker
 
     protected override void AdditionalAction()
     {
-        if (Global.instance.isNormal)
+        if (Global.instance.m_KeyIdx == 1 && Global.instance.isNormal)
         {
             this.ShowPassCard();
 
             Global.instance.m_Hero.m_HoldPassCard = true;
+
+            m_Texts_Day = "拿去吧勇士";
         }
 
     }

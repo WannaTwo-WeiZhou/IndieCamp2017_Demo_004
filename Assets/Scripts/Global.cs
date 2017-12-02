@@ -24,11 +24,14 @@ public class Global : MonoBehaviour
     public Text m_SpeakText;
     public GameObject m_Btn_Yes;
     public GameObject m_Btn_No;
+    public bool isNormal = true;
+
+
     [HideInInspector]
     public List<StateChange> m_StateChanges;
     [HideInInspector]
     public List<Wolf> m_Wolfs;
-    public bool isNormal = true;
+    public int m_KeyIdx = 0;
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
 
@@ -47,6 +50,7 @@ public class Global : MonoBehaviour
     {
         isNormal = true;
 		AudioManager.instance.Play(Constants.BGM_Theme);
+        m_KeyIdx = 0;
     }
     public void ChangeSpeakText(string newText)
     {
