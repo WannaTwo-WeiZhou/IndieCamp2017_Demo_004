@@ -13,5 +13,10 @@ public class Beauty : Speaker
 	public override void LineComplete()
 	{
 		base.LineComplete();
+
+		if (m_CurLineIdx_Night == 1)
+		{
+			ExtensionManager.instance.m_Beauty = true;
+		}
 	}
 }

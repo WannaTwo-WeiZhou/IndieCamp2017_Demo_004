@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Conductor : Speaker
 {
-	private const string PASSCARDTAG = "PassCard";
 	
 	public override void ShowText()
 	{
@@ -23,16 +22,7 @@ public class Conductor : Speaker
 			// unlock pass card
 			if (!Global.instance.m_Hero.m_HoldPassCard)
 			{
-				Global.instance.m_Hero.m_HoldPassCard = true;
-
-				// show card
-				GameObject passCard = GameObject.
-					FindGameObjectWithTag(PASSCARDTAG);
-				if (passCard != null)
-				{
-					Image img = passCard.GetComponent<Image>();
-					img.DOFade(1f, 1f);
-				}
+				Global.instance.m_Hero.GetPassCard();
 			}
 		}
 	}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
@@ -9,19 +10,26 @@ public class Hero : MonoBehaviour
 
     // [HideInInspector]
     public bool m_HoldPassCard = false;
+    public bool m_HoldPink = false;
+    public bool m_HoldArm = false;
 
     private Transform m_Trans;
     private Vector3 m_TarPos;
     private ClickObject m_CurClickObj = null;
 
     private const string MOVETWEENID = "MoveTween";
+	private const string PASSCARDTAG = "PassCard";
+	private const string PINKTAG = "Pink";
+	private const string ARMTAG = "Arm";
 
     void Awake()
     {
         m_Trans = transform;
         m_TarPos = m_Trans.position;
-		m_CurClickObj = null;
+        m_CurClickObj = null;
         m_HoldPassCard = false;
+        m_HoldPink = false;
+        m_HoldArm = false;
     }
 
     public void Move(Vector2 pos, ClickObject clickObj)
@@ -82,6 +90,52 @@ public class Hero : MonoBehaviour
             }
         }
 
+    }
+
+    public void GetPassCard()
+    {
+        if (m_HoldPassCard) return;
+
+        m_HoldPassCard = true;
+
+        // show card
+        GameObject passCard = GameObject.
+            FindGameObjectWithTag(PASSCARDTAG);
+        if (passCard != null)
+        {
+            Image img = passCard.GetComponent<Image>();
+            img.DOFade(1f, 1f);
+        }
+    }
+    public void GetPink()
+    {
+        if (m_HoldPink) return;
+
+        m_HoldPink = true;
+
+        // show pink
+        GameObject pink = GameObject.
+            FindGameObjectWithTag(PINKTAG);
+        if (pink != null)
+        {
+            Image img = pink.GetComponent<Image>();
+            img.DOFade(1f, 1f);
+        }
+    }
+    public void GetArm()
+    {
+        if (m_HoldArm) return;
+
+        m_HoldArm = true;
+
+        // show arm
+        GameObject arm = GameObject.
+            FindGameObjectWithTag(ARMTAG);
+        if (arm != null)
+        {
+            Image img = arm.GetComponent<Image>();
+            img.DOFade(1f, 1f);
+        }
     }
 }
 

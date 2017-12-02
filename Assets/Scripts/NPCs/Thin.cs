@@ -13,5 +13,10 @@ public class Thin : Speaker
 	public override void LineComplete()
 	{
 		base.LineComplete();
+
+		if (m_CurLineIdx_Night == 1)
+		{
+			Global.instance.m_Hero.GetPink();
+		}
 	}
 }

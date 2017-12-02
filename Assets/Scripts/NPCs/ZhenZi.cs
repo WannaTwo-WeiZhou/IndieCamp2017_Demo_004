@@ -24,5 +24,13 @@ public class ZhenZi : Speaker
 
 			
 		}
+
+		if (SpeakerManager.instance.m_Mum.m_CurLineIdx_Night != 3)
+		{
+			if (m_CurLineIdx_Night == 1)
+			{
+				m_CurLineIdx_Night = 0;
+			}
+		}
 	}
 }

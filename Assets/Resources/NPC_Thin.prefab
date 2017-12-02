@@ -109,8 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60460876b3be04449bb7811f329873d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Texts_Day: []
-  m_Texts_Night: []
+  m_Texts_Day:
+  - "\u4F60\u597D"
+  m_Texts_Night:
+  - "\u5E2E\u6211\u5411\u5973\u795E\u8868\u767D"
   m_CurLineIdx_Day: 0
   m_CurLineIdx_Night: 0
 --- !u!114 &114870419795723070

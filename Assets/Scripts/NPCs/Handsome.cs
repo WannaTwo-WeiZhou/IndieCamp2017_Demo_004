@@ -13,5 +13,23 @@ public class Handsome : Speaker
 	public override void LineComplete()
 	{
 		base.LineComplete();
+
+		if (m_CurLineIdx_Night == 4)
+		{
+			if (!Global.instance.m_Hero.m_HoldArm)
+			{
+				m_CurLineIdx_Night = 3;
+			}
+		}
+
+		if (m_CurLineIdx_Night == 5)
+		{
+			this.ShowDoorToScene4();
+		}
+	}
+
+	private void ShowDoorToScene4()
+	{
+
 	}
 }
