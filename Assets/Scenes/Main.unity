@@ -168,7 +168,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4066256375514946, guid: c0204499756741a4aafb3b676cf71573, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.07
+      value: 2.12
       objectReference: {fileID: 0}
     - target: {fileID: 4066256375514946, guid: c0204499756741a4aafb3b676cf71573, type: 2}
       propertyPath: m_LocalPosition.y
@@ -791,6 +791,7 @@ MonoBehaviour:
   m_Btn_Yes: {fileID: 954187359}
   m_Btn_No: {fileID: 1513138114}
   m_StateChanges: []
+  isNormal: 0
 --- !u!4 &1008339745
 Transform:
   m_ObjectHideFlags: 0
@@ -1419,6 +1420,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 61037086883391742, guid: 5b361dbdd560d6845a43364a5438a646,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b361dbdd560d6845a43364a5438a646, type: 2}
   m_IsPrefabParent: 0
@@ -1533,7 +1539,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1764938339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.07, y: 0, z: -10.025391}
+  m_LocalPosition: {x: 2.12, y: 0, z: -10.025391}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1166720905}

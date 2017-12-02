@@ -26,6 +26,7 @@ public class Global : MonoBehaviour
     public GameObject m_Btn_No;
     [HideInInspector]
     public List<StateChange> m_StateChanges;
+    public bool isNormal = true;
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
 
@@ -40,6 +41,10 @@ public class Global : MonoBehaviour
             Destroy(gameObject);
         }
     }
+	void Start()
+	{
+		isNormal = true;
+	}
     public void ChangeSpeakText(string newText)
     {
         m_SpeakText.text = "";
@@ -104,6 +109,11 @@ public class Global : MonoBehaviour
 
     public void TurnToNormalWorld()
     {
+        if (isNormal)
+        {
+            return;
+        }
+        isNormal = true;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
         {
@@ -113,6 +123,11 @@ public class Global : MonoBehaviour
     }
     public void TurnToBeyondWorld()
     {
+        if (isNormal == false)
+        {
+            return;
+        }
+        isNormal = false;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
         {

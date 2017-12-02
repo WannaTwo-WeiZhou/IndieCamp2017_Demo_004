@@ -29,6 +29,10 @@ public class InputManager : MonoBehaviour
                 {
                     ClickObject oneClick = hits[i].collider.
                         GetComponent<ClickObject>();
+                    if(oneClick == null)
+                    {
+                        return;
+                    }
                     if (oneClick.m_ClickedType > highestType)
                     {
                         highestIdx = i;

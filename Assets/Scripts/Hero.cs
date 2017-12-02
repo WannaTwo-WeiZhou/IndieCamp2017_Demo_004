@@ -12,7 +12,7 @@ public class Hero : MonoBehaviour
 
     private Transform m_Trans;
     private Vector3 m_TarPos;
-	private ClickObject m_CurClickObj = null;
+    private ClickObject m_CurClickObj = null;
 
     private const string MOVETWEENID = "MoveTween";
 
@@ -37,7 +37,7 @@ public class Hero : MonoBehaviour
         // m_Trans.DOMoveX(pos.x, dur);
 
         m_TarPos = new Vector3(pos.x, m_TarPos.y, 0);
-		m_CurClickObj = clickObj;
+        m_CurClickObj = clickObj;
     }
 
     void Update()
@@ -52,11 +52,11 @@ public class Hero : MonoBehaviour
         {
             m_Trans.position = m_TarPos;
 
-			if (m_CurClickObj != null)
-			{
-				m_CurClickObj.ReachedPos();
-				m_CurClickObj = null;
-			}
+            if (m_CurClickObj != null)
+            {
+                m_CurClickObj.ReachedPos();
+                m_CurClickObj = null;
+            }
         }
         else
         {
@@ -64,5 +64,10 @@ public class Hero : MonoBehaviour
                 m_MoveVec * Time.deltaTime;
             m_Trans.Translate(vec);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        Debug.Log(coll.gameObject.name);
     }
 }
