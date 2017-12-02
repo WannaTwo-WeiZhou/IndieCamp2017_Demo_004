@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b9a763769c670419f50b0131c4cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveVec: 3
+  m_MoveVec: 1
 --- !u!114 &114441427946316252
 MonoBehaviour:
   m_ObjectHideFlags: 1
