@@ -19,11 +19,13 @@ public class Global : MonoBehaviour
     public static Global instance { get; private set; }
 
     public float m_PerCharDur = 0.2f;
-
+    public Vector3 m_LeftBornPos = new Vector3(-14f, 0, 0);
+    public Vector3 m_RightBornPos = new Vector3(47f, 0, 0);
     public Hero m_Hero;
     public Text m_SpeakText;
     public GameObject m_Btn_Yes;
     public GameObject m_Btn_No;
+    public List<GameObject> m_Carts;
     public bool isNormal = true;
 
 
@@ -34,6 +36,7 @@ public class Global : MonoBehaviour
     public int m_KeyIdx = 0;
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
+    private int m_CarIndex = 1;
 
     void OnEnable()
     {
@@ -49,8 +52,9 @@ public class Global : MonoBehaviour
     void Start()
     {
         isNormal = true;
-		AudioManager.instance.Play(Constants.BGM_Theme);
+        AudioManager.instance.Play(Constants.BGM_Theme);
         m_KeyIdx = 0;
+		SetCarActive(m_CarIndex);
     }
     public void ChangeSpeakText(string newText)
     {
@@ -78,12 +82,18 @@ public class Global : MonoBehaviour
             case SwitchType.GoToPreScene:
                 {
                     Debug.Log("To pre scene!!!");
+                    BornInPos(m_RightBornPos);
+                    m_CarIndex--;
+                    SetCarActive(m_CarIndex);
                 }
                 break;
 
             case SwitchType.GoToNextScene:
                 {
                     Debug.Log("To next scene!!!");
+                    BornInPos(m_LeftBornPos);
+                    m_CarIndex++;
+                    SetCarActive(m_CarIndex);
                 }
                 break;
 
@@ -92,6 +102,21 @@ public class Global : MonoBehaviour
 
         }
     }
+    public void SetCarActive(int index)
+    {
+        for (int i = 0; i < m_Carts.Count; i++)
+        {
+            m_Carts[i].SetActive(false);
+        }
+        m_Carts[index].SetActive(true);
+    }
+    public void BornInPos(Vector3 targetpos)
+    {
+        CameraEffect.instance.MaskScenes();
+        m_Hero.transform.position = targetpos;
+        CameraEffect.instance.transform.position = targetpos;
+    }
+
     public void BtnCallback_No()
     {
         switch (m_CurSwitch)
@@ -120,8 +145,8 @@ public class Global : MonoBehaviour
         {
             return;
         }
-		AudioManager.instance.ChangeVol(Constants.BGM_Theme,1f);
-		AudioManager.instance.Stop(Constants.BGM_BeyondWorld);
+        AudioManager.instance.ChangeVol(Constants.BGM_Theme, 1f);
+        AudioManager.instance.Stop(Constants.BGM_BeyondWorld);
         isNormal = true;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
@@ -129,10 +154,10 @@ public class Global : MonoBehaviour
 
             one.TurnToNormal();
         }
-		foreach(var one in m_Wolfs)
-		{
-			one.StateChange(false,null);
-		}
+        foreach (var one in m_Wolfs)
+        {
+            one.StateChange(false, null);
+        }
 
         this.CleanSpeakText();
     }
@@ -142,18 +167,18 @@ public class Global : MonoBehaviour
         {
             return;
         }
-		AudioManager.instance.ChangeVol(Constants.BGM_Theme,0f);
-		AudioManager.instance.Play(Constants.BGM_BeyondWorld);
+        AudioManager.instance.ChangeVol(Constants.BGM_Theme, 0f);
+        AudioManager.instance.Play(Constants.BGM_BeyondWorld);
         isNormal = false;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
         {
             one.TurnToBeyond();
         }
-		foreach(var one in m_Wolfs)
-		{
-			one.StateChange(true,m_Hero.transform);
-		}
+        foreach (var one in m_Wolfs)
+        {
+            one.StateChange(true, m_Hero.transform);
+        }
 
         this.CleanSpeakText();
     }
@@ -189,7 +214,7 @@ public class Global : MonoBehaviour
 
     public void GameOver()
     {
-		Debug.LogError("Game Over");
+        Debug.LogError("Game Over");
     }
 }
 
