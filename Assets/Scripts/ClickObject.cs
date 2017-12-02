@@ -35,7 +35,7 @@ public class ClickObject : MonoBehaviour
 
 	public void ReachedPos()
 	{
-        Debug.Log(gameObject.name + " reached!!! Type = " + m_ClickedType);
+        // Debug.Log(gameObject.name + " reached!!! Type = " + m_ClickedType);
 
 		switch (m_ClickedType)
         {

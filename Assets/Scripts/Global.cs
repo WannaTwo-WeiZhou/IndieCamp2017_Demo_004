@@ -13,6 +13,8 @@ public class Global : MonoBehaviour
 
     public Hero m_Hero;
     public Text m_SpeakText;
+    [HideInInspector]
+    public List<StateChange> m_StateChanges;
 
     void OnEnable()
     {
@@ -25,12 +27,31 @@ public class Global : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     public void ChangeSpeakText(string newText)
     {
 		m_SpeakText.text = "";
 
 		float dur = newText.Length * m_PerCharDur;
         m_SpeakText.DOText(newText, dur);
+	}
+    public void TurnToNormalWorld()
+    {
+        CameraEffect.instance.MaskScenes();
+        foreach (var one in m_StateChanges)
+        {
+
+            one.TurnToNormal();
+        }
+    }
+    public void TurnToBeyondWorld()
+    {
+        CameraEffect.instance.MaskScenes();
+        foreach (var one in m_StateChanges)
+        {
+            one.TurnToBeyond();
+        }
     }
 }
+
+
+
