@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Speaker : MonoBehaviour
 {
-	public List<string> m_Texts = new List<string>();
+	public string m_Texts_Day = "- Day -";
+	public string m_Texts_Night = "- Night -";
 
-	protected int m_CurIdx = 0;
 
 	protected virtual void Awake()
 	{
-		m_CurIdx = 0;
+		
 	}
 
 	protected virtual void AdditionalAction()
@@ -20,11 +20,15 @@ public class Speaker : MonoBehaviour
 
     public void ShowText()
 	{
-		if (m_CurIdx >= m_Texts.Count) return;
-
-		Global.instance.ChangeSpeakText(m_Texts[m_CurIdx]);
-		// m_CurIdx ++;
-
+		if (Global.instance.isNormal)
+		{
+			Global.instance.ChangeSpeakText(m_Texts_Day);
+		}
+		else
+		{
+			Global.instance.ChangeSpeakText(m_Texts_Night);
+		}
+		
 		this.AdditionalAction();
 	}
 }

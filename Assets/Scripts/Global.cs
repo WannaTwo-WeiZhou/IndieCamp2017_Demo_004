@@ -120,6 +120,8 @@ public class Global : MonoBehaviour
 
             one.TurnToNormal();
         }
+
+        this.CleanSpeakText();
     }
     public void TurnToBeyondWorld()
     {
@@ -133,6 +135,8 @@ public class Global : MonoBehaviour
         {
             one.TurnToBeyond();
         }
+
+        this.CleanSpeakText();
     }
 
     public void TryGoToPreScene()
