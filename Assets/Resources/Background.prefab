@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212693763194758764}
   - component: {fileID: 61037086883391742}
   - component: {fileID: 114563257191670022}
+  - component: {fileID: 114836091246269046}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 212049460003622520}
   - component: {fileID: 61832870683367744}
   - component: {fileID: 114780040165969518}
+  - component: {fileID: 114233996854698210}
   m_Layer: 0
   m_Name: Door_Right
   m_TagString: Untagged
@@ -58,6 +60,7 @@ GameObject:
   - component: {fileID: 212058353548545032}
   - component: {fileID: 61984143081712850}
   - component: {fileID: 114298217257034060}
+  - component: {fileID: 114379953888295622}
   m_Layer: 0
   m_Name: Door_Left
   m_TagString: Untagged
@@ -181,6 +184,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &114233996854698210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914508514813104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1360da1534893bb409e3f3802fa7df9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NormalSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_BeyondSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_SR: {fileID: 212049460003622520}
 --- !u!114 &114298217257034060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,6 +210,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ClickedType: 1
+--- !u!114 &114379953888295622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917381342468104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1360da1534893bb409e3f3802fa7df9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NormalSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_BeyondSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_SR: {fileID: 212058353548545032}
 --- !u!114 &114563257191670022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,6 +248,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ClickedType: 2
+--- !u!114 &114836091246269046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148680907122338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1360da1534893bb409e3f3802fa7df9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NormalSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_BeyondSprite: {fileID: 21300000, guid: 44a054df1702e39458b7072b08d0f212, type: 3}
+  m_SR: {fileID: 212693763194758764}
 --- !u!212 &212049460003622520
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -251,7 +296,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -295,7 +340,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
