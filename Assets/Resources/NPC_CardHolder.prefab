@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b436ecf01c40146ab0ea6d149f9553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Texts:
-  - "\u62FF\u53BB\u5427\u52C7\u58EB"
+  m_Texts_Day: "\u62FF\u53BB\u5427\u52C7\u58EB"
+  m_Texts_Night: "\u4F60\u770B\u4E0D\u5230\u6211 \u770B\u4E0D\u5230\u6211"
   m_PassCard: {fileID: 0}
 --- !u!114 &114886438135287166
 MonoBehaviour:
