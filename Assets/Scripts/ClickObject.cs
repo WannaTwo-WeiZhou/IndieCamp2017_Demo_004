@@ -28,37 +28,48 @@ public class ClickObject : MonoBehaviour
 
     public void BeClicked(Vector2 pos)
     {
-        Debug.Log(gameObject.name + "be clicked!!! Type = " + m_ClickedType);
+        // Debug.Log(gameObject.name + "be clicked!!! Type = " + m_ClickedType);
 
-        switch (m_ClickedType)
+        m_Hero.Move(pos, this);
+    }
+
+	public void ReachedPos()
+	{
+        // Debug.Log(gameObject.name + " reached!!! Type = " + m_ClickedType);
+
+		switch (m_ClickedType)
         {
             case ClickedType.OnlyMove:
                 {
-					m_Hero.Move(pos);
+					// do nothing
                 }
                 break;
 
             case ClickedType.MoveToPreScene:
                 {
-					m_Hero.Move(pos);
+					
                 }
                 break;
 
             case ClickedType.MoveToNextScene:
                 {
-					m_Hero.Move(pos);
+					
                 }
                 break;
 
             case ClickedType.MoveAndSpeak:
                 {
-					m_Hero.Move(pos);
+					Speak speak = GetComponent<Speak>();
+					if (speak != null)
+					{
+						speak.ShowText();
+					}
                 }
                 break;
 
             default:
                 break;
         }
-    }
+	}
 
 }
