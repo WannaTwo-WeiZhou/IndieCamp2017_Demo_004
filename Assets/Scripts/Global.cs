@@ -9,12 +9,13 @@ public class Global : MonoBehaviour
 
     public static Global instance { get; private set; }
 
-	public float m_PerCharDur = 0.2f;
+    public float m_PerCharDur = 0.2f;
 
     public Hero m_Hero;
     public Text m_SpeakText;
     [HideInInspector]
     public List<StateChange> m_StateChanges;
+    public bool isNormal = true;
 
     void OnEnable()
     {
@@ -27,15 +28,24 @@ public class Global : MonoBehaviour
             Destroy(gameObject);
         }
     }
+	void Start()
+	{
+		isNormal = true;
+	}
     public void ChangeSpeakText(string newText)
     {
-		m_SpeakText.text = "";
+        m_SpeakText.text = "";
 
-		float dur = newText.Length * m_PerCharDur;
+        float dur = newText.Length * m_PerCharDur;
         m_SpeakText.DOText(newText, dur);
-	}
+    }
     public void TurnToNormalWorld()
     {
+        if (isNormal)
+        {
+            return;
+        }
+        isNormal = true;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
         {
@@ -45,6 +55,11 @@ public class Global : MonoBehaviour
     }
     public void TurnToBeyondWorld()
     {
+        if (isNormal == false)
+        {
+            return;
+        }
+        isNormal = false;
         CameraEffect.instance.MaskScenes();
         foreach (var one in m_StateChanges)
         {
@@ -52,10 +67,10 @@ public class Global : MonoBehaviour
         }
     }
 
-	public void GameOver()
-	{
+    public void GameOver()
+    {
 
-	}
+    }
 }
 
 
