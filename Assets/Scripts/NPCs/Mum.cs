@@ -69,6 +69,9 @@ public class Mum : Speaker
         Global.instance.m_Hero.LoseBell();
         Global.instance.RemoveWolfs();
         this.ShowText();
+        
+        AudioManager.instance.PlayOnce(Constants.Noise_Ghost);
+		
     }
 
     public override void ShowText()
