@@ -30,6 +30,10 @@ public class Handsome : Speaker
 	{
 		base.ShowText();
 		
+		if (!Global.instance.isNormal && m_CurLineIdx_Night == 0)
+        {
+            AudioManager.instance.PlayOnce(Constants.Noise_Shine);
+        }
 	}
 
 	public override void LineComplete()

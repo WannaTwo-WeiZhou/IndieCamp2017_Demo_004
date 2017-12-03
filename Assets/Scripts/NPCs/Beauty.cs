@@ -32,6 +32,11 @@ public class Beauty : Speaker
 	public override void ShowText()
 	{
 		base.ShowText();
+
+		if (!Global.instance.isNormal)
+		{
+			AudioManager.instance.PlayOnce(Constants.Noise_BeautifulCry);
+		}
 		
 	}
 

@@ -67,5 +67,8 @@ public class Fatty : Speaker
 
 		Vector3 newPos = new Vector3(-4f, 0, 0);
 		transform.Translate(newPos);
+		
+		AudioManager.instance.PlayOnce(Constants.Noise_Eat);
+		
 	}
 }
