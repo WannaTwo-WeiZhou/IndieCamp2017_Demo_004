@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wolf : MonoBehaviour
+public class Wolf : Speaker
 {
 
     public float m_MoveVec = 3f;
@@ -11,8 +11,10 @@ public class Wolf : MonoBehaviour
     private Transform m_TargetTransform;
 
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         m_Transform = transform;
         canmove = false;
 		m_TargetTransform = null;
@@ -23,8 +25,18 @@ public class Wolf : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        if (m_CarIdx == Global.instance.m_CarIndex)
+        {
+            this.SetVisible(true);
+        }
+        else
+        {
+            this.SetVisible(false);
+            return;
+        }
+        
         if (canmove)
         {
             MoveToTargetRole(m_TargetTransform.position);

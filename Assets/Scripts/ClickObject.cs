@@ -75,7 +75,7 @@ public class ClickObject : MonoBehaviour
 					Item it = GetComponent<Item>();
 					if (it != null)
 					{
-						
+						it.GetItem();
 					}
                 }
                 break;

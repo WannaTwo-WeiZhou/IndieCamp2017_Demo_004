@@ -189,6 +189,19 @@ public class Global : MonoBehaviour
 
         this.CleanSpeakText();
     }
+
+    public void BtnCallback_TurnWorld()
+    {
+        if (isNormal)
+        {
+            this.TurnToBeyondWorld();
+        }
+        else
+        {
+            this.TurnToNormalWorld();
+        }
+    }
+
     public void TurnToBeyondWorld()
     {
         if (isNormal == false)
@@ -215,6 +228,12 @@ public class Global : MonoBehaviour
     {
         string text = "BE~~~~~~";
 
+        if (m_CarIndex == 1)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+
         if (m_CarIndex == 4 &&
         SpeakerManager.instance.m_Mum.m_CurState != MumState.Following)
         {
@@ -234,13 +253,19 @@ public class Global : MonoBehaviour
     {
         string text = "BE~~~~~~";
 
+        if (m_CarIndex == 4)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+
         if (!m_Hero.m_HoldPassCard)
         {
             this.ChangeSpeakText(text);
             return;
         }
         if (m_CarIndex == 3 &&
-        SpeakerManager.instance.m_Handsome.m_CurLineIdx_Night == 5)
+        SpeakerManager.instance.m_Handsome.m_CurLineIdx_Night != 5)
         {
             this.ChangeSpeakText(text);
             return;

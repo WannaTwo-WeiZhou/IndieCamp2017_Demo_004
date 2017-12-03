@@ -36,8 +36,7 @@ public class ZhenZi : Speaker
         if (m_CurLineIdx_Day == 4)
         {
             // unlock bell
-
-
+            Global.instance.m_Hero.GetBell();
 
         }
 

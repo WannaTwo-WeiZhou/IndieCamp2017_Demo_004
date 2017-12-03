@@ -21,6 +21,7 @@ public class Hero : MonoBehaviour
 	private const string PASSCARDTAG = "PassCard";
 	private const string PINKTAG = "Pink";
 	private const string ARMTAG = "Arm";
+	private const string BELLTAG = "Bell";
 
     void Awake()
     {
@@ -139,6 +140,31 @@ public class Hero : MonoBehaviour
         {
             Image img = arm.GetComponent<Image>();
             img.DOFade(1f, 1f);
+        }
+    }
+
+    public void GetBell()
+    {
+        GameObject bell = GameObject.
+            FindGameObjectWithTag(BELLTAG);
+        if (bell != null)
+        {
+            Image img = bell.GetComponent<Image>();
+            img.DOFade(1f, 1f);
+            Button btn = bell.GetComponent<Button>();
+            btn.enabled = true;
+        }
+    }
+    public void LoseBell()
+    {
+        GameObject bell = GameObject.
+            FindGameObjectWithTag(BELLTAG);
+        if (bell != null)
+        {
+            Image img = bell.GetComponent<Image>();
+            img.DOFade(0f, 1f);
+            Button btn = bell.GetComponent<Button>();
+            btn.enabled = false;
         }
     }
 }

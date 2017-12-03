@@ -16,8 +16,17 @@ public class Item : MonoBehaviour
 	public int m_CarIdx = 1;
 	public bool m_Visible = true;
     public ItemType m_Type = ItemType.NULL;
+
+    protected bool m_Got = false;
+
     protected virtual void Update()
     {
+        if (m_Got)
+        {
+            this.SetVisible(false);
+            return;
+        }
+
         if (m_CarIdx == Global.instance.m_CarIndex)
         {
             this.SetVisible(true);
@@ -44,6 +53,7 @@ public class Item : MonoBehaviour
 
     public void GetItem()
     {
+        m_Got = true;
         switch (m_Type)
         {
             case ItemType.Arm:
