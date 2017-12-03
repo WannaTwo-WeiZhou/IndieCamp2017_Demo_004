@@ -10,6 +10,7 @@ public enum ClickedType
     MoveToPreScene = 1,
     MoveToNextScene = 2,
     MoveAndSpeak = 3,
+    GetSomething = 4,
 
     SIZE
 
@@ -32,7 +33,8 @@ public class ClickObject : MonoBehaviour
 
         m_Hero.Move(pos, this);
 
-        Global.instance.CleanSpeakText();
+        if (SpeakerManager.instance.m_Mum.m_CurState != MumState.Speaking)
+            Global.instance.CleanSpeakText();
     }
 
 	public void ReachedPos()
@@ -65,6 +67,16 @@ public class ClickObject : MonoBehaviour
 					if (speak != null)
 					{
 						speak.ShowText();
+					}
+                }
+                break;
+
+            case ClickedType.GetSomething:
+                {
+					Item it = GetComponent<Item>();
+					if (it != null)
+					{
+						it.GetItem();
 					}
                 }
                 break;

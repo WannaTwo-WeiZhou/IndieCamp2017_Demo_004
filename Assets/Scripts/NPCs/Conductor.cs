@@ -6,34 +6,45 @@ using UnityEngine.UI;
 
 public class Conductor : Speaker
 {
-	private const string PASSCARDTAG = "PassCard";
-	
-	public override void ShowText()
-	{
-		base.ShowText();
-		
-	}
+    protected override void Update()
+    {
+        if (m_CarIdx == Global.instance.m_CarIndex)
+        {
+            this.SetVisible(true);
+        }
+        else
+        {
+            this.SetVisible(false);
+            return;
+        }
 
-	public override void LineComplete()
-	{
-		base.LineComplete();
+        if (!m_CanMove) return;
 
-		if (m_CurLineIdx_Night == 2)
-		{
-			// unlock pass card
-			if (!Global.instance.m_Hero.m_HoldPassCard)
-			{
-				Global.instance.m_Hero.m_HoldPassCard = true;
+        Mum mum = SpeakerManager.instance.m_Mum;
+        if (mum.m_CurState == MumState.Following && mum.m_Visible &&
+        mum.m_CurSceneIdx == m_CarIdx)
+        {
+            this.MoveToTargetPos(1f, mum.transform.position);
+        }
+    }
 
-				// show card
-				GameObject passCard = GameObject.
-					FindGameObjectWithTag(PASSCARDTAG);
-				if (passCard != null)
-				{
-					Image img = passCard.GetComponent<Image>();
-					img.DOFade(1f, 1f);
-				}
-			}
-		}
-	}
+    public override void ShowText()
+    {
+        base.ShowText();
+
+    }
+
+    public override void LineComplete()
+    {
+        base.LineComplete();
+
+        if (m_CurLineIdx_Night == 2)
+        {
+            // unlock pass card
+            if (!Global.instance.m_Hero.m_HoldPassCard)
+            {
+                Global.instance.m_Hero.GetPassCard();
+            }
+        }
+    }
 }

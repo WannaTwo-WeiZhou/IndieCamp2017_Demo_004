@@ -53,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1134772644981462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.226728, y: 9.089955, z: 9.089955}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalScale: {x: 20.02568, y: 34.82725, z: 34.82725}
   m_Children: []
   m_Father: {fileID: 4314470491461672}
   m_RootOrder: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582679359827124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.6, y: 0, z: 0}
+  m_LocalPosition: {x: 50, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4041989175670556}
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.66}
+  m_Size: {x: 2.58, y: 5.1}
   m_EdgeRadius: 0
 --- !u!114 &114870419795723070
 MonoBehaviour:
@@ -135,8 +135,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bc30cf704878e44b15b505c8ce7a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Texts_Day: []
-  m_Texts_Night: []
+  m_CarIdx: 2
+  m_Visible: 1
+  m_Texts_Day:
+  - "\u4F60\u597D"
+  m_Texts_Night:
+  - "\u80FD\u4E0D\u80FD\u9EBB\u70E6\u4F60\u8BA9\u4E00\u4E0B\\n\u4F60\u8FD8\u6709\u8138\u56DE\u6765\uFF0C\u6211\u672C\u53EF\u4EE5\u4E0B\u8F66\u5230XX\u9547\u5403\u5230\u90A3\u91CC\u7684\u7F8E\u98DF\uFF0C\u5C31\u56E0\u4E3A\u4F60\u2026\u2026"
+  - "\u80FD\u4E0D\u80FD\u8BF7\u4F60\u8BA9\u4E00\u4E0B\uFF0C\u4E5F\u8BB8\u6211\u5F88\u5FEB\u53EF\u4EE5\u8865\u507F\u2026\u2026\\n\u8865\u507F\uFF01\u4F60\u80FD\u8865\u507F\u4E9B\u4EC0\u4E48\uFF0C\u61E6\u5F31\u7684\u5973\u4EBA\u2026\u2026"
+  - "\u4F60\u2026\u4F60\u5148\u627E\u5230\u6211\u7684\u85AF\u7247\u5427\uFF0C\u8F66\u53A2\u4E4B\u524D\u6643\u52A8\u7684\u592A\u5389\u5BB3\uFF0C\u4E0D\u77E5\u9053\u6EDA\u5230\u54EA\u91CC\u53BB\u4E86"
+  - "\u85AF\u7247\u7ED9\u4F60\\n\u54FC"
   m_CurLineIdx_Day: 0
   m_CurLineIdx_Night: 0
 --- !u!212 &212718273632322564
