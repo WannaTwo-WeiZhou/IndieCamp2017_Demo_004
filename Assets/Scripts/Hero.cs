@@ -84,7 +84,11 @@ public class Hero : MonoBehaviour
         }
         else
         {
-            if (other.GetComponent<Wolf>() == true)
+            if (other.GetComponent<Wolf>())
+            {
+                Global.instance.GameOver();
+            }
+            if (other.GetComponent<Mum>())
             {
                 Global.instance.GameOver();
             }

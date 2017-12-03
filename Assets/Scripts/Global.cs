@@ -31,7 +31,6 @@ public class Global : MonoBehaviour
     public List<StateChange> m_StateChanges;
     [HideInInspector]
     public List<Wolf> m_Wolfs;
-    public int m_KeyIdx = 0;
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
     private Speaker m_CurSpeaker = null;
@@ -51,7 +50,6 @@ public class Global : MonoBehaviour
     {
         isNormal = true;
         AudioManager.instance.Play(Constants.BGM_Theme);
-        m_KeyIdx = 0;
     }
     public void ChangeSpeakText(string newText, Speaker speaker = null)
     {
@@ -214,6 +212,11 @@ public class Global : MonoBehaviour
     public void GameOver()
     {
         Debug.LogError("Game Over");
+    }
+
+    public void FinalResult()
+    {
+        
     }
 }
 

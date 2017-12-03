@@ -6,7 +6,18 @@ using UnityEngine.UI;
 
 public class Conductor : Speaker
 {
-	
+	void Update()
+	{
+		if (!m_CanMove) return;
+
+		Mum mum = SpeakerManager.instance.m_Mum;
+		if (mum.m_CurState == MumState.Following && mum.m_Visible &&
+		mum.m_CurSceneIdx == 1)
+		{
+			this.MoveToTargetPos(1f, mum.transform.position);
+		}
+	}
+
 	public override void ShowText()
 	{
 		base.ShowText();

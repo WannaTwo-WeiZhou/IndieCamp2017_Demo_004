@@ -7,30 +7,39 @@ using UnityEngine.UI;
 public class ZhenZi : Speaker
 {
 
-	public override void ShowText()
-	{
-		base.ShowText();
-		
-	}
+    public override void ShowText()
+    {
+        base.ShowText();
 
-	public override void LineComplete()
-	{
-		base.LineComplete();
+        if (SpeakerManager.instance.m_Mum.m_CurState == MumState.Following)
+        {
+            SpeakerManager.instance.m_Mum.ChangeState(MumState.FinalSpeaking);
+        }
+    }
 
-		if (m_CurLineIdx_Day == 4)
+    public override void LineComplete()
+    {
+        base.LineComplete();
+
+        if (m_CurLineIdx_Day == 4)
+        {
+            // unlock bell
+
+
+
+        }
+
+        if (m_CurLineIdx_Night == 1)
+        {
+            m_CurLineIdx_Night = 0;
+        }
+		else if (m_CurLineIdx_Night >= 2 && m_CurLineIdx_Night < 4)
 		{
-			// unlock bell
-
-
-			
+			this.ShowText();
 		}
-
-		if (SpeakerManager.instance.m_Mum.m_CurLineIdx_Night != 3)
+		else if (m_CurLineIdx_Night == 4)
 		{
-			if (m_CurLineIdx_Night == 1)
-			{
-				m_CurLineIdx_Night = 0;
-			}
+			Global.instance.FinalResult();
 		}
-	}
+    }
 }
