@@ -295,7 +295,7 @@ public class Global : MonoBehaviour
 
     public void FinalResult()
     {
-
+        Debug.LogError("Final Result");
     }
 
     public void RemoveWolfs()
