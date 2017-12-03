@@ -54,6 +54,7 @@ public class Global : MonoBehaviour
         isNormal = true;
         AudioManager.instance.Play(Constants.BGM_Theme);
         SetCarActive(m_CarIndex);
+         IntoTheCar(m_CarIndex);
     }
     public void ChangeSpeakText(string newText, Speaker speaker = null)
     {
@@ -107,6 +108,7 @@ public class Global : MonoBehaviour
                     BornInPos(m_RightBornPos);
                     m_CarIndex--;
                     SetCarActive(m_CarIndex);
+                    IntoTheCar(m_CarIndex);
 
                     Mum mum = SpeakerManager.instance.m_Mum;
                     if (mum.m_CurState == MumState.Following)
@@ -122,6 +124,7 @@ public class Global : MonoBehaviour
                     BornInPos(m_LeftBornPos);
                     m_CarIndex++;
                     SetCarActive(m_CarIndex);
+                    IntoTheCar(m_CarIndex);
                 }
                 break;
 
@@ -298,6 +301,38 @@ public class Global : MonoBehaviour
             Destroy(one.gameObject);
         }
     }
+    public void IntoTheCar(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                {
+                    AudioManager.instance.Play(Constants.Noise_Light, true);
+                    AudioManager.instance.Play(Constants.Noise_Metre, true);
+                    break;
+                }
+            case 2:
+                {
+                    AudioManager.instance.Stop(Constants.Noise_Light);
+                    AudioManager.instance.Stop(Constants.Noise_Metre);
+                    break;
+                }
+            case 3:
+                {
+                    AudioManager.instance.Stop(Constants.Noise_Light);
+                    AudioManager.instance.Stop(Constants.Noise_Metre);
+                    break;
+                }
+            case 4:
+                {
+                    AudioManager.instance.Stop(Constants.Noise_Light);
+                    AudioManager.instance.Stop(Constants.Noise_Metre);
+                    break;
+                }
+        }
+
+    }
+
 }
 
 
