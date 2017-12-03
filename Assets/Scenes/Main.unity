@@ -299,6 +299,72 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: "\u56BC\u85AF\u7247"
+    clip: {fileID: 8300000, guid: e390b96bef17383429f09fea9ff36800, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u5730\u94C1\u547C\u5578\u58F0"
+    clip: {fileID: 8300000, guid: 46e5854b76ca9d943bccf178c2752c10, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u5929\u771F\u7B11\u58F0"
+    clip: {fileID: 8300000, guid: 10fe88c13f93d8d43b1c6469ab73ec97, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u5973\u9B3C\u5C16\u5578"
+    clip: {fileID: 8300000, guid: ea4ebf0982baab540a2fd03e898bf44b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u62F3\u5934\u51FB\u6253\u6905\u5B50\u80CC"
+    clip: {fileID: 8300000, guid: bb0f0b3b178074d458216cb5d72e33af, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u6454\u5012\u58F0"
+    clip: {fileID: 8300000, guid: 1ce51b1f6864c1c428f291256136370c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u73E0\u5B9D\u95EA\u4EAE\u58F0"
+    clip: {fileID: 8300000, guid: e203b652b950624468816d3beb320480, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u7535\u706F\u7535\u6D41\u58F0"
+    clip: {fileID: 8300000, guid: baa421398962bac44b07d9520e746c92, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u7F8E\u5973\u54ED\u6CE3\u58F0"
+    clip: {fileID: 8300000, guid: 23164d9087f94754dbd45102681ee17f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u8001\u5987\u54ED\u6CE3\u58F0"
+    clip: {fileID: 8300000, guid: faf073b56bd209f428775c28487a004a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: "\u94C3\u94DB\u58F0"
+    clip: {fileID: 8300000, guid: 4c09cede702835b47b7dd33b287180a0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &124300719
 Transform:
   m_ObjectHideFlags: 0
