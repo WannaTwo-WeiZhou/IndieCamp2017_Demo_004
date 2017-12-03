@@ -86,6 +86,17 @@ public class Global : MonoBehaviour
         m_CurSwitch = SwitchType.NULL;
         m_CurSpeaker = null;
     }
+    public void BtnCallback_SpeakTable()
+    {
+        // Debug.Log("BtnCallback_SpeakTable 1");
+        if (m_CurSpeaker == null) return;
+
+        // Debug.Log("BtnCallback_SpeakTable 2");
+        if (DOTween.IsTweening(m_SpeakText)) return;
+
+        // Debug.Log("BtnCallback_SpeakTable 3");
+        m_CurSpeaker.ShowText();
+    }
     public void BtnCallback_Yes()
     {
         switch (m_CurSwitch)
@@ -154,17 +165,6 @@ public class Global : MonoBehaviour
                 break;
 
         }
-    }
-    public void BtnCallback_SpeakTable()
-    {
-        // Debug.Log("BtnCallback_SpeakTable 1");
-        if (m_CurSpeaker == null) return;
-
-        // Debug.Log("BtnCallback_SpeakTable 2");
-        if (DOTween.IsTweening(m_SpeakText)) return;
-
-        // Debug.Log("BtnCallback_SpeakTable 3");
-        m_CurSpeaker.ShowText();
     }
 
     public void TurnToNormalWorld()
