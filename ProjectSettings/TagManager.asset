@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - PassCard
+  - Pink
+  - Arm
+  - Bell
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Bg
   - 
   - 
   - 
@@ -47,4 +50,7 @@ TagManager:
     locked: 0
   - name: Hero
     uniqueID: 3336710829
+    locked: 0
+  - name: Item
+    uniqueID: 824838219
     locked: 0

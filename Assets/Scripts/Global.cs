@@ -27,16 +27,15 @@ public class Global : MonoBehaviour
     public GameObject m_Btn_No;
     public List<GameObject> m_Carts;
     public bool isNormal = true;
+    public int m_CarIndex = 1;
 
 
     [HideInInspector]
     public List<StateChange> m_StateChanges;
     [HideInInspector]
     public List<Wolf> m_Wolfs;
-    public int m_KeyIdx = 0;
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
-    private int m_CarIndex = 1;
     private Speaker m_CurSpeaker = null;
 
     void OnEnable()
@@ -54,8 +53,7 @@ public class Global : MonoBehaviour
     {
         isNormal = true;
         AudioManager.instance.Play(Constants.BGM_Theme);
-        m_KeyIdx = 0;
-		SetCarActive(m_CarIndex);
+        SetCarActive(m_CarIndex);
     }
     public void ChangeSpeakText(string newText, Speaker speaker = null)
     {
@@ -73,7 +71,7 @@ public class Global : MonoBehaviour
                     speaker.LineComplete();
                     // m_CurSpeaker = null;
                 }
-                    
+
             });
     }
     public void CleanSpeakText()
@@ -98,6 +96,12 @@ public class Global : MonoBehaviour
                     BornInPos(m_RightBornPos);
                     m_CarIndex--;
                     SetCarActive(m_CarIndex);
+
+                    Mum mum = SpeakerManager.instance.m_Mum;
+                    if (mum.m_CurState == MumState.Following)
+                    {
+                        mum.ChangeScene(m_RightBornPos, m_CarIndex);
+                    }
                 }
                 break;
 
@@ -121,7 +125,7 @@ public class Global : MonoBehaviour
         {
             m_Carts[i].SetActive(false);
         }
-        m_Carts[index].SetActive(true);
+        m_Carts[index - 1].SetActive(true);
     }
     public void BornInPos(Vector3 targetpos)
     {
@@ -185,6 +189,19 @@ public class Global : MonoBehaviour
 
         this.CleanSpeakText();
     }
+
+    public void BtnCallback_TurnWorld()
+    {
+        if (isNormal)
+        {
+            this.TurnToBeyondWorld();
+        }
+        else
+        {
+            this.TurnToNormalWorld();
+        }
+    }
+
     public void TurnToBeyondWorld()
     {
         if (isNormal == false)
@@ -209,7 +226,22 @@ public class Global : MonoBehaviour
 
     public void TryGoToPreScene()
     {
-        string text = "Goto the pre scene?";
+        string text = "BE~~~~~~";
+
+        if (m_CarIndex == 1)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+
+        if (m_CarIndex == 4 &&
+        SpeakerManager.instance.m_Mum.m_CurState != MumState.Following)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+
+        text = "Goto the pre scene?";
         this.ChangeSpeakText(text);
 
         m_Btn_Yes.SetActive(true);
@@ -219,26 +251,52 @@ public class Global : MonoBehaviour
 
     public void TryGoToNextScene()
     {
-        if (m_Hero.m_HoldPassCard)
-        {
-            string text = "Goto the next scene?";
-            this.ChangeSpeakText(text);
+        string text = "BE~~~~~~";
 
-            m_Btn_Yes.SetActive(true);
-            m_Btn_No.SetActive(true);
-            m_CurSwitch = SwitchType.GoToNextScene;
-        }
-        else
+        if (m_CarIndex == 4)
         {
-            string text = "BE~~~~~~";
             this.ChangeSpeakText(text);
+            return;
         }
 
+        if (!m_Hero.m_HoldPassCard)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+        if (m_CarIndex == 3 &&
+        SpeakerManager.instance.m_Handsome.m_CurLineIdx_Night != 5)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+
+        text = "Goto the next scene?";
+        this.ChangeSpeakText(text);
+
+        m_Btn_Yes.SetActive(true);
+        m_Btn_No.SetActive(true);
+        m_CurSwitch = SwitchType.GoToNextScene;
     }
 
     public void GameOver()
     {
         Debug.LogError("Game Over");
+    }
+
+    public void FinalResult()
+    {
+
+    }
+
+    public void RemoveWolfs()
+    {
+        for (int i = m_Wolfs.Count - 1; i >= 0; i--)
+        {
+            Wolf one = m_Wolfs[i];
+            m_Wolfs.RemoveAt(i);
+            Destroy(one.gameObject);
+        }
     }
 }
 
