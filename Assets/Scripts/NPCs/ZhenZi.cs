@@ -27,6 +27,13 @@ public class ZhenZi : Speaker
         {
             SpeakerManager.instance.m_Mum.ChangeState(MumState.FinalSpeaking);
         }
+
+        if (Global.instance.isNormal && m_CurLineIdx_Day == 0)
+        {
+            AudioManager.instance.PlayOnce(Constants.Noise_ChildSmile);
+        }
+
+
     }
 
     public override void LineComplete()
@@ -51,6 +58,8 @@ public class ZhenZi : Speaker
         else if (m_CurLineIdx_Night == 4)
         {
             Global.instance.FinalResult();
+            AudioManager.instance.PlayOnce(Constants.Noise_FallDown);
+        
         }
     }
 }
