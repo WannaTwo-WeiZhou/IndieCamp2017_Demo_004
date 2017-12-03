@@ -88,13 +88,13 @@ public class Global : MonoBehaviour
     }
     public void BtnCallback_SpeakTable()
     {
-        // Debug.Log("BtnCallback_SpeakTable 1");
+        // Debug.Log("BtnCallback_SpeakTable:\n" +
+        //     DOTween.IsTweening(m_SpeakText) + "\n" + 
+        //     m_CurSpeaker);
         if (m_CurSpeaker == null) return;
 
-        // Debug.Log("BtnCallback_SpeakTable 2");
         if (DOTween.IsTweening(m_SpeakText)) return;
 
-        // Debug.Log("BtnCallback_SpeakTable 3");
         m_CurSpeaker.ShowText();
     }
     public void BtnCallback_Yes()

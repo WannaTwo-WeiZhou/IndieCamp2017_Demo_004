@@ -33,6 +33,10 @@ public class CryingOldWoman : Speaker
 	{
 		base.ShowText();
 		
+		if (!Global.instance.isNormal)
+		{
+			AudioManager.instance.PlayOnce(Constants.Noise_OldWomenCry);
+		}
 	}
 
 	public override void LineComplete()
