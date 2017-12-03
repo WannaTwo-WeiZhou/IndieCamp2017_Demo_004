@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Speaker : MonoBehaviour
 {
+	public int m_CarIdx = 1;
+	public bool m_Visible = true;
+
 	public List<string> m_Texts_Day = new List<string>();
 	public List<string> m_Texts_Night = new List<string>();
 
@@ -17,6 +20,32 @@ public class Speaker : MonoBehaviour
 		m_CurLineIdx_Day = 0;
 		m_CurLineIdx_Night = 0;
 		m_CanMove = true;
+	}
+
+	protected virtual void Update()
+    {
+        if (m_CarIdx == Global.instance.m_CarIndex)
+        {
+            this.SetVisible(true);
+        }
+        else
+        {
+            this.SetVisible(false);
+            return;
+        }
+    }
+
+	protected void SetVisible(bool val)
+	{
+		m_Visible = val;
+
+		Collider2D col = GetComponent<Collider2D>();
+        col.enabled = val;
+        Renderer ren = GetComponentInChildren<Renderer>();
+        if (ren != null)
+        {
+            ren.enabled = val;
+        }
 	}
 
     public virtual void ShowText()

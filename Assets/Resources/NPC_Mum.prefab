@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2e333fd382bf245b096ca32d93fbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CarIdx: 4
+  m_Visible: 1
   m_Texts_Day:
   - "\u4F60\u597D"
   m_Texts_Night:
@@ -117,6 +119,10 @@ MonoBehaviour:
   - "\u4E0D\uFF0C\u6211\u8BB0\u5F97\u8FD9\u94C3\u94DB\uFF0C\u6211\u4E5F\u559C\u6B22\u771F\u8863\\n\u662F\u4F60\u9080\u8BF7\u771F\u8863\u53BB\u6E38\u4E50\u573A\uFF0C\u662F\u4F60\u4E00\u4E2A\u4EBA\u9003\u4E86\u51FA\u53BB\uFF0C\u662F\u4F60\u6CA1\u6709\u4F5C\u4EFB\u4F55\u4E8B\uFF0C\u4F60\u660E\u660E\u53EF\u4EE5\uFF0C\u53EF\u4EE5\u7684\u2026\u2026\u4F60\u53EF\u4EE5\u6551\u6211\u4EEC\u4F60\u5374\u9009\u62E9\u4E86\u9003\u8D70\uFF0C\u554A\u2026\u2026\u6211\u5FC3\u7231\u7684\u5973\u513F\u2026\u2026"
   m_CurLineIdx_Day: 0
   m_CurLineIdx_Night: 0
+  m_CurState: -1
+  m_MoveVec: 3
+  m_SlowDownVec: 0.2
+  m_CurSceneIdx: 4
 --- !u!114 &114870419795723070
 MonoBehaviour:
   m_ObjectHideFlags: 1

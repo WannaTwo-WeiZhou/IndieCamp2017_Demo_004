@@ -19,7 +19,6 @@ public class Mum : Speaker
     public MumState m_CurState = MumState.NULL;
     public float m_MoveVec = 3f;
     public float m_SlowDownVec = 0.2f;
-    public bool m_Visible = true;
 	public int m_CurSceneIdx = 4;
 
     private Transform m_Trans;
@@ -32,17 +31,25 @@ public class Mum : Speaker
 
         m_Trans = transform;
         m_CurState = MumState.NULL;
-        m_Visible = true;
         m_IE_SlowDown = null;
         m_CurVec = m_MoveVec;
 		m_CurSceneIdx = 4;
     }
 
-    void Update()
+	void Start()
+	{
+		this.SetVisible(false);
+	}
+
+    protected override void Update()
     {
 		if (m_CurState == MumState.NULL)
 		{
 			// check global's scene idx and call StartMyAction()
+			if (m_CarIdx == Global.instance.m_CarIndex)
+			{
+				this.StartMyAction();
+			}
 		}
         if (m_CurState == MumState.Following && m_Visible)
         {
@@ -54,8 +61,11 @@ public class Mum : Speaker
 
     public void StartMyAction()
     {
+		if (m_CurState != MumState.NULL) return;
+
+		this.SetVisible(true);
 		this.ChangeState(MumState.Speaking);
-        // Global.instance.TurnToBeyondWorld();
+        Global.instance.TurnToBeyondWorld();
         this.ShowText();
     }
 
@@ -102,23 +112,11 @@ public class Mum : Speaker
 
     private IEnumerator IE_InvisibleAndShowAgain(float t)
     {
-        m_Visible = false;
-        Collider2D col = GetComponent<Collider2D>();
-        col.enabled = false;
-        Renderer ren = GetComponentInChildren<Renderer>();
-        if (ren != null)
-        {
-            ren.enabled = false;
-        }
+		this.SetVisible(false);
 
         yield return new WaitForSeconds(t);
 
-        m_Visible = true;
-        col.enabled = true;
-        if (ren != null)
-        {
-            ren.enabled = true;
-        }
+        this.SetVisible(true);
     }
 
     void OnTriggerEnter2D(Collider2D other)

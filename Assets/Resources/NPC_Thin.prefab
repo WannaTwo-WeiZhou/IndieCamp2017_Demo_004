@@ -54,7 +54,7 @@ Transform:
   m_GameObject: {fileID: 1134772644981462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.226728, y: 9.089955, z: 9.089955}
+  m_LocalScale: {x: 8.885425, y: 18.293531, z: 9.089955}
   m_Children: []
   m_Father: {fileID: 4314470491461672}
   m_RootOrder: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582679359827124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.6, y: 0, z: 0}
+  m_LocalPosition: {x: 27.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4041989175670556}
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.66}
+  m_Size: {x: 1.36, y: 2.81}
   m_EdgeRadius: 0
 --- !u!114 &114786776761302426
 MonoBehaviour:
@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60460876b3be04449bb7811f329873d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CarIdx: 2
+  m_Visible: 1
   m_Texts_Day:
   - "\u4F60\u597D"
   m_Texts_Night:

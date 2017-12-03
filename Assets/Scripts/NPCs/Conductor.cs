@@ -6,35 +6,45 @@ using UnityEngine.UI;
 
 public class Conductor : Speaker
 {
-	void Update()
-	{
-		if (!m_CanMove) return;
+    protected override void Update()
+    {
+        if (m_CarIdx == Global.instance.m_CarIndex)
+        {
+            this.SetVisible(true);
+        }
+        else
+        {
+            this.SetVisible(false);
+            return;
+        }
 
-		Mum mum = SpeakerManager.instance.m_Mum;
-		if (mum.m_CurState == MumState.Following && mum.m_Visible &&
-		mum.m_CurSceneIdx == 1)
-		{
-			this.MoveToTargetPos(1f, mum.transform.position);
-		}
-	}
+        if (!m_CanMove) return;
 
-	public override void ShowText()
-	{
-		base.ShowText();
-		
-	}
+        Mum mum = SpeakerManager.instance.m_Mum;
+        if (mum.m_CurState == MumState.Following && mum.m_Visible &&
+        mum.m_CurSceneIdx == m_CarIdx)
+        {
+            this.MoveToTargetPos(1f, mum.transform.position);
+        }
+    }
 
-	public override void LineComplete()
-	{
-		base.LineComplete();
+    public override void ShowText()
+    {
+        base.ShowText();
 
-		if (m_CurLineIdx_Night == 2)
-		{
-			// unlock pass card
-			if (!Global.instance.m_Hero.m_HoldPassCard)
-			{
-				Global.instance.m_Hero.GetPassCard();
-			}
-		}
-	}
+    }
+
+    public override void LineComplete()
+    {
+        base.LineComplete();
+
+        if (m_CurLineIdx_Night == 2)
+        {
+            // unlock pass card
+            if (!Global.instance.m_Hero.m_HoldPassCard)
+            {
+                Global.instance.m_Hero.GetPassCard();
+            }
+        }
+    }
 }

@@ -19,12 +19,15 @@ public class Global : MonoBehaviour
     public static Global instance { get; private set; }
 
     public float m_PerCharDur = 0.2f;
-
+    public Vector3 m_LeftBornPos = new Vector3(-14f, 0, 0);
+    public Vector3 m_RightBornPos = new Vector3(47f, 0, 0);
     public Hero m_Hero;
     public Text m_SpeakText;
     public GameObject m_Btn_Yes;
     public GameObject m_Btn_No;
+    public List<GameObject> m_Carts;
     public bool isNormal = true;
+    public int m_CarIndex = 1;
 
 
     [HideInInspector]
@@ -50,6 +53,7 @@ public class Global : MonoBehaviour
     {
         isNormal = true;
         AudioManager.instance.Play(Constants.BGM_Theme);
+        SetCarActive(m_CarIndex);
     }
     public void ChangeSpeakText(string newText, Speaker speaker = null)
     {
@@ -67,7 +71,7 @@ public class Global : MonoBehaviour
                     speaker.LineComplete();
                     // m_CurSpeaker = null;
                 }
-                    
+
             });
     }
     public void CleanSpeakText()
@@ -89,12 +93,24 @@ public class Global : MonoBehaviour
             case SwitchType.GoToPreScene:
                 {
                     Debug.Log("To pre scene!!!");
+                    BornInPos(m_RightBornPos);
+                    m_CarIndex--;
+                    SetCarActive(m_CarIndex);
+
+                    Mum mum = SpeakerManager.instance.m_Mum;
+                    if (mum.m_CurState == MumState.Following)
+                    {
+                        mum.ChangeScene(m_RightBornPos, m_CarIndex);
+                    }
                 }
                 break;
 
             case SwitchType.GoToNextScene:
                 {
                     Debug.Log("To next scene!!!");
+                    BornInPos(m_LeftBornPos);
+                    m_CarIndex++;
+                    SetCarActive(m_CarIndex);
                 }
                 break;
 
@@ -103,6 +119,21 @@ public class Global : MonoBehaviour
 
         }
     }
+    public void SetCarActive(int index)
+    {
+        for (int i = 0; i < m_Carts.Count; i++)
+        {
+            m_Carts[i].SetActive(false);
+        }
+        m_Carts[index - 1].SetActive(true);
+    }
+    public void BornInPos(Vector3 targetpos)
+    {
+        CameraEffect.instance.MaskScenes();
+        m_Hero.transform.position = targetpos;
+        CameraEffect.instance.transform.position = targetpos;
+    }
+
     public void BtnCallback_No()
     {
         switch (m_CurSwitch)
@@ -182,7 +213,16 @@ public class Global : MonoBehaviour
 
     public void TryGoToPreScene()
     {
-        string text = "Goto the pre scene?";
+        string text = "BE~~~~~~";
+
+        if (m_CarIndex == 4 &&
+        SpeakerManager.instance.m_Mum.m_CurState != MumState.Following)
+        {
+            this.ChangeSpeakText(text);
+            return;
+        }
+
+        text = "Goto the pre scene?";
         this.ChangeSpeakText(text);
 
         m_Btn_Yes.SetActive(true);
@@ -192,21 +232,26 @@ public class Global : MonoBehaviour
 
     public void TryGoToNextScene()
     {
-        if (m_Hero.m_HoldPassCard)
-        {
-            string text = "Goto the next scene?";
-            this.ChangeSpeakText(text);
+        string text = "BE~~~~~~";
 
-            m_Btn_Yes.SetActive(true);
-            m_Btn_No.SetActive(true);
-            m_CurSwitch = SwitchType.GoToNextScene;
-        }
-        else
+        if (!m_Hero.m_HoldPassCard)
         {
-            string text = "BE~~~~~~";
             this.ChangeSpeakText(text);
+            return;
+        }
+        if (m_CarIndex == 3 &&
+        SpeakerManager.instance.m_Handsome.m_CurLineIdx_Night == 5)
+        {
+            this.ChangeSpeakText(text);
+            return;
         }
 
+        text = "Goto the next scene?";
+        this.ChangeSpeakText(text);
+
+        m_Btn_Yes.SetActive(true);
+        m_Btn_No.SetActive(true);
+        m_CurSwitch = SwitchType.GoToNextScene;
     }
 
     public void GameOver()
@@ -216,7 +261,7 @@ public class Global : MonoBehaviour
 
     public void FinalResult()
     {
-        
+
     }
 }
 

@@ -10,6 +10,7 @@ public enum ClickedType
     MoveToPreScene = 1,
     MoveToNextScene = 2,
     MoveAndSpeak = 3,
+    GetSomething = 4,
 
     SIZE
 
@@ -65,6 +66,16 @@ public class ClickObject : MonoBehaviour
 					if (speak != null)
 					{
 						speak.ShowText();
+					}
+                }
+                break;
+
+            case ClickedType.GetSomething:
+                {
+					Item it = GetComponent<Item>();
+					if (it != null)
+					{
+						
 					}
                 }
                 break;

@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Handsome : Speaker
 {
-	void Update()
+	protected override void Update()
 	{
+		if (m_CarIdx == Global.instance.m_CarIndex)
+		{
+			this.SetVisible(true);
+		}
+		else
+		{
+			this.SetVisible(false);
+			return;
+		}
+
 		if (!m_CanMove) return;
 
 		Mum mum = SpeakerManager.instance.m_Mum;
 		if (mum.m_CurState == MumState.Following && mum.m_Visible &&
-		mum.m_CurSceneIdx == 3)
+		mum.m_CurSceneIdx == m_CarIdx)
 		{
 			this.MoveToTargetPos(1f, mum.transform.position);
 		}

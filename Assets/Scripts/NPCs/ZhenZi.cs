@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 public class ZhenZi : Speaker
 {
+    protected override void Update()
+    {
+        if (m_CarIdx == Global.instance.m_CarIndex)
+        {
+            this.SetVisible(true);
+        }
+        else
+        {
+            this.SetVisible(false);
+            return;
+        }
+    }
 
     public override void ShowText()
     {
@@ -33,13 +45,13 @@ public class ZhenZi : Speaker
         {
             m_CurLineIdx_Night = 0;
         }
-		else if (m_CurLineIdx_Night >= 2 && m_CurLineIdx_Night < 4)
-		{
-			this.ShowText();
-		}
-		else if (m_CurLineIdx_Night == 4)
-		{
-			Global.instance.FinalResult();
-		}
+        else if (m_CurLineIdx_Night >= 2 && m_CurLineIdx_Night < 4)
+        {
+            this.ShowText();
+        }
+        else if (m_CurLineIdx_Night == 4)
+        {
+            Global.instance.FinalResult();
+        }
     }
 }
