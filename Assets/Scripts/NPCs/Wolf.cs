@@ -36,7 +36,7 @@ public class Wolf : Speaker
             this.SetVisible(false);
             return;
         }
-        
+
         if (canmove)
         {
             MoveToTargetRole(m_TargetTransform.position);

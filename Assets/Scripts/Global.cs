@@ -288,6 +288,16 @@ public class Global : MonoBehaviour
     {
 
     }
+
+    public void RemoveWolfs()
+    {
+        for (int i = m_Wolfs.Count - 1; i >= 0; i--)
+        {
+            Wolf one = m_Wolfs[i];
+            m_Wolfs.RemoveAt(i);
+            Destroy(one.gameObject);
+        }
+    }
 }
 
 

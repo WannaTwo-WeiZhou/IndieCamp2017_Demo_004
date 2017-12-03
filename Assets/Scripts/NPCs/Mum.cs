@@ -67,6 +67,7 @@ public class Mum : Speaker
 		this.ChangeState(MumState.Speaking);
         Global.instance.TurnToBeyondWorld();
         Global.instance.m_Hero.LoseBell();
+        Global.instance.RemoveWolfs();
         this.ShowText();
     }
 

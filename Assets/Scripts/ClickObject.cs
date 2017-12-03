@@ -33,7 +33,8 @@ public class ClickObject : MonoBehaviour
 
         m_Hero.Move(pos, this);
 
-        Global.instance.CleanSpeakText();
+        if (SpeakerManager.instance.m_Mum.m_CurState != MumState.Speaking)
+            Global.instance.CleanSpeakText();
     }
 
 	public void ReachedPos()
