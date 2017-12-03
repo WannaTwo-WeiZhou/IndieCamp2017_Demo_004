@@ -37,6 +37,7 @@ public class Global : MonoBehaviour
 
     private SwitchType m_CurSwitch = SwitchType.NULL;
     private Speaker m_CurSpeaker = null;
+    private bool m_IsSpeaking = false;
 
     void OnEnable()
     {
@@ -60,12 +61,15 @@ public class Global : MonoBehaviour
         m_SpeakText.text = "";
         m_CurSpeaker = speaker;
 
+        m_IsSpeaking = true;
+
         // DOTween.Restart(m_SpeakText);
         float dur = newText.Length * m_PerCharDur;
         m_SpeakText.DOText(newText, dur).
         SetEase(Ease.Linear).
         OnComplete(delegate ()
             {
+                m_IsSpeaking = false;
                 if (speaker != null)
                 {
                     speaker.LineComplete();
@@ -77,6 +81,7 @@ public class Global : MonoBehaviour
     public void CleanSpeakText()
     {
         DOTween.Pause(m_SpeakText);
+        m_IsSpeaking = false;
 
         m_SpeakText.text = "";
 
@@ -88,13 +93,13 @@ public class Global : MonoBehaviour
     }
     public void BtnCallback_SpeakTable()
     {
-        // Debug.Log("BtnCallback_SpeakTable 1");
+        // Debug.Log("BtnCallback_SpeakTable:\n" +
+        //     DOTween.IsTweening(m_SpeakText) + "\n" + 
+        //     m_CurSpeaker);
         if (m_CurSpeaker == null) return;
+        if (m_IsSpeaking) return;
+        // if (DOTween.IsTweening(m_SpeakText)) return;
 
-        // Debug.Log("BtnCallback_SpeakTable 2");
-        if (DOTween.IsTweening(m_SpeakText)) return;
-
-        // Debug.Log("BtnCallback_SpeakTable 3");
         m_CurSpeaker.ShowText();
     }
     public void BtnCallback_Yes()
@@ -103,7 +108,9 @@ public class Global : MonoBehaviour
         {
             case SwitchType.GoToPreScene:
                 {
-                    Debug.Log("To pre scene!!!");
+                    // Debug.Log("To pre scene!!!");
+                    this.CleanSpeakText();
+
                     BornInPos(m_RightBornPos);
                     m_CarIndex--;
                     SetCarActive(m_CarIndex);
@@ -118,7 +125,9 @@ public class Global : MonoBehaviour
 
             case SwitchType.GoToNextScene:
                 {
-                    Debug.Log("To next scene!!!");
+                    // Debug.Log("To next scene!!!");
+                    this.CleanSpeakText();
+
                     BornInPos(m_LeftBornPos);
                     m_CarIndex++;
                     SetCarActive(m_CarIndex);

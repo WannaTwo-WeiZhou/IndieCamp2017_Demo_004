@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Fatty : Speaker
 {
+	private bool m_MovedAway = false;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		m_MovedAway = false;
+	}
+
 	protected override void Update()
 	{
 		if (m_CarIdx == Global.instance.m_CarIndex)
@@ -52,7 +61,11 @@ public class Fatty : Speaker
 
 	private void MoveAway()
 	{
-		Vector3 newPos = new Vector3(-2f, 0, 0);
+		if (m_MovedAway) return;
+
+		m_MovedAway = true;
+
+		Vector3 newPos = new Vector3(-4f, 0, 0);
 		transform.Translate(newPos);
 	}
 }
